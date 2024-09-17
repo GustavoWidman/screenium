@@ -20,4 +20,4 @@ To be determined. There will be a binary available soon in releases and a build 
 
 ## License
 
-GPLv3
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
