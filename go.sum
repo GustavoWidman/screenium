@@ -1,15 +1,7 @@
-github.com/VividCortex/godaemon v1.0.0 h1:aHYrScWvgaSOdAoYCdObWXLm+e1rldP9Pwb1ZvuZkQw=
-github.com/VividCortex/godaemon v1.0.0/go.mod h1:hBWe/72KbGt/lb95E+Sh9ersdYbB57Dt6CG66S1YPno=
 github.com/cpuguy83/go-md2man/v2 v2.0.4 h1:wfIWP927BUkWJb2NmU/kNDYIBTh/ziUX91+lVfRxZq4=
 github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/creack/pty v1.1.23 h1:4M6+isWdcStXEf15G/RbrMPOQj1dZ7HPZCGwE4kOeP0=
 github.com/creack/pty v1.1.23/go.mod h1:08sCNb52WyoAwi2QDyzUCTgcvVFhUzewun7wtTfvcwE=
-github.com/fatih/color v1.17.0 h1:GlRw1BRJxkpqUCBKzKOw098ed57fEsKeNjpTe3cSjK4=
-github.com/fatih/color v1.17.0/go.mod h1:YZ7TlrGPkiz6ku9fK3TLD/pl3CpsiFyu8N92HLgmosI=
-github.com/fiorix/go-daemon v0.0.0-20240805082548-4a116ee2abf8 h1:SpH5PRkGsz5Rvv26vfxagVzT/rsdtm5Tnuwu3yAvPjw=
-github.com/fiorix/go-daemon v0.0.0-20240805082548-4a116ee2abf8/go.mod h1:MWr7UL715Sd1efCpd9hpGaQLmRnPGoeWiCOC2KHmEyo=
-github.com/gofrs/flock v0.12.1 h1:MTLVXXHf8ekldpJk3AKicLij9MdwOWkZ+a/jHHZby9E=
-github.com/gofrs/flock v0.12.1/go.mod h1:9zxTsyu5xtJ9DK+1tFZyibEV7y3uwDxPPfbxeeHCoD0=
 github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
 github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0 h1:iQTw/8FWTuc7uiaSepXwyf3o52HaUYcV+Tu66S3F5GA=
