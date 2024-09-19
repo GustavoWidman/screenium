@@ -17,8 +17,6 @@ func main() {
 		server.RunDaemon()
 	}
 
-	// client.EvaluateArgs(os.Args)
-
 	if err := client.MakeApp().Run(os.Args); err != nil {
 		log.Fatal(err)
 	}

@@ -8,36 +8,6 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func EvaluateArgs(args []string) {
-	if len(args) < 2 {
-		fmt.Println("Usage: program [daemon|create|list|attach]")
-		return
-	}
-
-	switch args[1] {
-	case "create":
-		client_commands.CreateCommand(args)
-	case "attach":
-		client_commands.AttachCommand(args)
-	case "list":
-		client_commands.ListCommand(args)
-	case "kill":
-		client_commands.KillCommand(args)
-	case "detach":
-		client_commands.DetachCommand(args)
-	// case "runlocal":
-	// 	shell_name := "local"
-	// 	shell_path := "/bin/bash"
-	// 	shell, err := shell.Create(shell_name, shell_path)
-	// 	if err != nil {
-	// 		log.Fatal(err)
-	// 	}
-	// 	shell.Attach()
-	default:
-		client_commands.UnknownCommand(args)
-	}
-}
-
 func MakeApp() *cli.App {
 	return &cli.App{
 		Name:        client_utils.ColorBoldMagenta("screenium"),
@@ -50,8 +20,6 @@ func MakeApp() *cli.App {
 		Version:         client_utils.ColorGrey("1.0.0-beta"),
 		HelpName:        "screenium",
 		HideHelpCommand: true,
-		DefaultCommand:  "help",
-
 		CustomAppHelpTemplate: fmt.Sprintf(`{{.Name}} {{.Description}} %s
 
 %s {{.Usage}}
@@ -77,7 +45,16 @@ func MakeApp() *cli.App {
 			client_commands.MakeDetachCommand(),
 			client_commands.MakeKillCommand(),
 			client_commands.MakeListCommand(),
-			client_commands.MakeHelpCommand(),
+			// client_commands.MakeHelpCommand(),
+		},
+		Action: func(c *cli.Context) error {
+			cli.ShowAppHelp(c)
+
+			if c.Args().Len() > 0 {
+				client_commands.UnknownCommand(c.Args())
+			}
+
+			return nil
 		},
 	}
 }

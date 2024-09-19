@@ -3,6 +3,7 @@ package server
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"net"
 	"os"
 	"path"
@@ -48,12 +49,11 @@ func RunDaemon() {
 		for {
 			select {
 			case <-timeout:
-				fmt.Println("Failed to bringup daemon")
+				log.Println("Failed to bringup daemon")
 				os.Exit(1)
 				return
 			default:
 				if server_utils.CheckDaemon() {
-					// log.Println("Daemon is running")
 					return
 				}
 				time.Sleep(time.Millisecond * 5)
@@ -78,10 +78,10 @@ func ListenToSocket() {
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
-			fmt.Println("Error accepting connection:", err)
+			log.Println("Error accepting connection:", err)
 			continue
 		}
-		fmt.Println("Accepted new connection.")
+		log.Println("Accepted new connection.")
 		go handleConnection(conn)
 	}
 }
@@ -90,7 +90,7 @@ func handleConnection(conn net.Conn) {
 	buf := bufio.NewReader(conn)
 	line, err := buf.ReadString('\n')
 	if err != nil {
-		fmt.Println("Error reading command:", err)
+		log.Println("Error reading command:", err)
 		fmt.Fprintf(conn, "internal error: %s\n", err.Error())
 		conn.Close()
 		return

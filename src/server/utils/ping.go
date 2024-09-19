@@ -54,9 +54,7 @@ func CheckDaemon() bool {
 	locked := string(out) != ""
 
 	if locked {
-		// log.Println("Manager PidFile is locked")
 		available := PingDaemon()
-		// log.Println("Received pong")
 		if available {
 			return true
 		}
