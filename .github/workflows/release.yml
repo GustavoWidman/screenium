@@ -23,7 +23,7 @@ jobs:
               run: go mod tidy
 
             - name: Build
-              run: go build -o screenium -ldflags "-s -w" src/main.go
+              run: CGO_ENABLED=0 go build -o screenium -ldflags "-s -w" src/main.go
 
             - name: Create Release
               run: |
