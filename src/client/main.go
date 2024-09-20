@@ -17,7 +17,7 @@ func MakeApp() *cli.App {
 			Name:  client_utils.ColorBoldMagenta("r3dlust"),
 			Email: "admin@r3dlust.com",
 		}},
-		Version:         client_utils.ColorGrey("1.0.0-beta"),
+		Version:         client_utils.ColorGrey("1.0.1-beta"),
 		HelpName:        "screenium",
 		HideHelpCommand: true,
 		CustomAppHelpTemplate: fmt.Sprintf(`{{.Name}} {{.Description}} %s
