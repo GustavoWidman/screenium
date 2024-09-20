@@ -26,11 +26,11 @@ fi
 # fi
 
 
-echo "Downloading latest tarball..."
+echo "Looking for the latest tarball..."
 
 tmpdir=$(mktemp -d)
 # Download the latest tarball from "https://api.github.com/GustavoWidman/screenium/releases/latest/"
-curl -sL https://api.github.com/repos/GustavoWidman/screenium/tarball/main | tar xzf - --directory $tmpdir
+curl -sL $(curl -s https://api.github.com/repos/GustavoWidman/screenium/releases/latest | grep "tarball_url" | awk '{print $2}' | sed 's|[\"\,]*||g') | tar xzf - --directory $tmpdir
 folder=$(find $tmpdir -maxdepth 1 -type d -name "GustavoWidman-screenium-*")
 
 # save the current dir and change to the new tmpdir

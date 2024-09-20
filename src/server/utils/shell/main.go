@@ -1,7 +1,7 @@
 package shell
 
 import (
-	"errors"
+	"fmt"
 	"os"
 	"os/exec"
 
@@ -27,8 +27,6 @@ type Shell struct {
 func CreateShell(shell_name string, shell_path string) (Shell, error) {
 	c := exec.Command(shell_path)
 
-	c.Env = append(os.Environ(), "SCREENIUM_SHELL=1")
-
 	ptty, err := pty.Start(c)
 	if err != nil {
 		return Shell{}, err
@@ -40,7 +38,11 @@ func CreateShell(shell_name string, shell_path string) (Shell, error) {
 		Pty:  ptty,
 	}
 
+	fmt.Println("PID:", c.Process.Pid)
+
 	shell.PID = c.Process.Pid
+
+	c.Process.Release()
 
 	if err := shell.MakeHistoryFile(); err != nil {
 		return Shell{}, err
@@ -52,27 +54,5 @@ func CreateShell(shell_name string, shell_path string) (Shell, error) {
 }
 
 func (shell *Shell) Close() error {
-	_, err := shell.Pty.Write([]byte("exit\n"))
-
-	if err != nil {
-		return err
-	}
-
-	state, err := shell.Cmd.Process.Wait()
-
-	if err != nil {
-		return err
-	}
-
-	if !state.Exited() {
-		return errors.New("shell did not exit cleanly")
-	}
-
-	err = shell.Pty.Close()
-
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return shell.Pty.Close()
 }

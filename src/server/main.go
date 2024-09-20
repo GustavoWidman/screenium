@@ -113,8 +113,6 @@ func handleConnection(conn net.Conn) {
 		server_commands.KillCommand(args, conn)
 	case "detach":
 		server_commands.DetachCommand(args, conn)
-	case "terminate":
-		server_commands.TerminateCommand(args, conn)
 	default:
 		server_commands.UnknownCommand(args, conn)
 	}
