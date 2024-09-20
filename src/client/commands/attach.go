@@ -129,7 +129,6 @@ func AttachToConn(conn net.Conn, shell_name, sessionID string, ch chan bool) {
 func MakeAttachCommand() *cli.Command {
 	return &cli.Command{
 		Name:        "attach",
-		Aliases:     []string{"a"},
 		Usage:       client_utils.ColorGreenBold("screenium attach ") + client_utils.ColorCyan("[flags]") + " " + "<shell name>",
 		UsageText:   client_utils.ColorGrey("shell-name"),
 		Description: "Attaches to a pre-existing screenium shell session",

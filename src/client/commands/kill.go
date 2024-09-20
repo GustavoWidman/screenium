@@ -19,7 +19,6 @@ func KillCommand(args []string) {
 func MakeKillCommand() *cli.Command {
 	return &cli.Command{
 		Name:        "kill",
-		Aliases:     []string{"k"},
 		Usage:       client_utils.ColorGreenBold("screenium kill"),
 		UsageText:   "",
 		Description: "Forcibly kills the screenium daemon if it is running",

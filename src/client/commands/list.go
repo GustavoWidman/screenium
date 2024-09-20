@@ -26,7 +26,7 @@ func MakeListCommand() *cli.Command {
 		Name:        "list",
 		Aliases:     []string{"ls"},
 		Usage:       client_utils.ColorGreenBold("screenium list"),
-		UsageText:   "               ",
+		UsageText:   "            ",
 		Description: "List all running shells and their statuses",
 		CustomHelpTemplate: fmt.Sprintf(`%s: {{.Description}}
 

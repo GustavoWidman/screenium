@@ -30,10 +30,9 @@ func detach(shell_name string) {
 func MakeDetachCommand() *cli.Command {
 	return &cli.Command{
 		Name:        "detach",
-		Aliases:     []string{"d"},
 		Usage:       client_utils.ColorGreenBold("screenium detach ") + "<shell name>",
 		UsageText:   client_utils.ColorGrey("shell-name"),
-		Description: "Forcibly detaches anyone that is currently the given shell",
+		Description: "Forcibly detaches anyone that is currently the given shell\n",
 		CustomHelpTemplate: fmt.Sprintf(`%s: {{.Description}}
 
 %s
