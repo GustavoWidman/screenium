@@ -18,16 +18,9 @@ fi
 #     echo "Arch Linux detected"
 # fi
 
-echo "Looking for the latest release..."
-
-# Find out the latest release tag
-url=$(curl -s https://api.github.com/repos/GustavoWidman/screenium/releases/latest | grep "releases/tag" | awk '{print $2}' | sed 's|[\"\,]*||g')
-tag=$(echo $url | sed 's|https://github.com/GustavoWidman/screenium/releases/tag/||g')
-download_link="https://github.com/GustavoWidman/screenium/releases/download/$tag/screenium"
-
-echo "Downloading $download_link..."
+echo "Downloading screenium..."
 tmpfile=$(mktemp)
-curl -sL $download_link -o $tmpfile
+curl -sL "https://github.com/GustavoWidman/screenium/releases/latest/download/screenium" -o $tmpfile
 
 echo "Installing screenium"
 sudo cp $tmpfile /usr/local/bin/screenium
