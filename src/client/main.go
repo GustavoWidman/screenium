@@ -43,6 +43,7 @@ func MakeApp() *cli.App {
 			client_commands.MakeCreateCommand(),
 			client_commands.MakeAttachCommand(),
 			client_commands.MakeDetachCommand(),
+			client_commands.MakeTerminateCommand(),
 			client_commands.MakeKillCommand(),
 			client_commands.MakeListCommand(),
 			// client_commands.MakeHelpCommand(),
