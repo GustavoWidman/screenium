@@ -21,13 +21,13 @@ You can also run these one-liners to install and build screenium (they just down
 ### Install
 
 ```bash
-curl -s https://links.r3dlust.com/screenium-install | bash
+curl -fsSL https://links.r3dlust.com/screenium-install | sudo bash
 ```
 
 ### Build
 
 ```bash
-curl -s https://links.r3dlust.com/screenium-build | bash
+curl -fsSL https://links.r3dlust.com/screenium-build | sudo bash
 ```
 
 ## Author
