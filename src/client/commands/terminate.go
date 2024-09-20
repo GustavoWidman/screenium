@@ -49,7 +49,7 @@ func terminate(shell_name string) {
 	conn := client_utils.QuickCommand(fmt.Sprintf("terminate %s\n", shell_name), true)
 	defer conn.Close()
 
-	go io.Copy(os.Stdin, conn)
+	go io.Copy(conn, os.Stdin)
 	io.Copy(os.Stdout, conn)
 	return
 }
