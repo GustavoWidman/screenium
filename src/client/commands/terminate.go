@@ -9,31 +9,13 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func DetachCommand(args []string) {
-	if len(args) < 2 {
-		fmt.Println("Usage: detach <shell-name>")
-		return
-	}
-	shell_name := args[2]
-
-	detach(shell_name)
-}
-
-func detach(shell_name string) {
-	conn := client_utils.QuickCommand(fmt.Sprintf("detach %s\n", shell_name), true)
-	defer conn.Close()
-
-	io.Copy(os.Stdout, conn)
-	return
-}
-
-func MakeDetachCommand() *cli.Command {
+func MakeTerminateCommand() *cli.Command {
 	return &cli.Command{
-		Name:        "detach",
-		Aliases:     []string{"d"},
-		Usage:       client_utils.ColorGreenBold("screenium detach ") + "<shell name>",
+		Name:        "terminate",
+		Aliases:     []string{"term", "t"},
+		Usage:       client_utils.ColorGreenBold("screenium terminate ") + "<shell name>",
 		UsageText:   client_utils.ColorGrey("shell-name"),
-		Description: "Forcibly detaches anyone that is currently the given shell",
+		Description: "Forcibly terminates a given shell session.\n",
 		CustomHelpTemplate: fmt.Sprintf(`%s: {{.Description}}
 
 %s
@@ -56,9 +38,18 @@ func MakeDetachCommand() *cli.Command {
 
 			shell_name := c.Args().Get(0)
 
-			detach(shell_name)
+			terminate(shell_name)
 
 			return nil
 		},
 	}
+}
+
+func terminate(shell_name string) {
+	conn := client_utils.QuickCommand(fmt.Sprintf("terminate %s\n", shell_name), true)
+	defer conn.Close()
+
+	go io.Copy(os.Stdin, conn)
+	io.Copy(os.Stdout, conn)
+	return
 }

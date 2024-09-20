@@ -36,6 +36,7 @@ func CreateCommand(args []string) {
 func MakeCreateCommand() *cli.Command {
 	return &cli.Command{
 		Name:        "create",
+		Aliases:     []string{"c", "make", "new", "mk"},
 		Usage:       client_utils.ColorGreenBold("screenium create ") + client_utils.ColorCyan("[flags]") + " " + "<shell name>",
 		UsageText:   client_utils.ColorGrey("shell-name"),
 		Description: "Creates a new screenium shell session",

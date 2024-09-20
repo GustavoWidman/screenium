@@ -8,10 +8,16 @@ import (
 )
 
 func UnknownCommand(args cli.Args) {
+	cmd := args.Get(0)
+
+	if cmd == "help" || cmd == "h" {
+		return
+	}
+
 	fmt.Println(client_utils.ColorRed("\nerror") +
 		client_utils.ColorGrey(": ") +
 		client_utils.ColorWhiteBold("unknown command ") +
-		client_utils.ColorBoldMagenta("\""+args.Get(0)+"\"") +
+		client_utils.ColorBoldMagenta("\""+cmd+"\"") +
 		client_utils.ColorGrey("."),
 	)
 	return
