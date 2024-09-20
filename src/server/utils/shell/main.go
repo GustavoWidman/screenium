@@ -27,6 +27,8 @@ type Shell struct {
 func CreateShell(shell_name string, shell_path string) (Shell, error) {
 	c := exec.Command(shell_path)
 
+	c.Env = append(os.Environ(), "SCREENIUM_SHELL=1")
+
 	ptty, err := pty.Start(c)
 	if err != nil {
 		return Shell{}, err
